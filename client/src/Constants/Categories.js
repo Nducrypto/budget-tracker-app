@@ -1,0 +1,81 @@
+export const incomeColors = [
+  "blue",
+  "pink",
+  "yellow",
+  "brown",
+  "purple",
+  "white",
+  "green",
+  "orange",
+  "gray",
+  "black",
+  "azure",
+  "midnightblue",
+];
+export const expenseColors = [
+  "maroon",
+  "lime",
+  "wheat",
+  "golden",
+  "salmon",
+  "chocolate",
+  "bronze",
+  "turquoise",
+  "aqua",
+  "crimson",
+  "silver",
+  "navy",
+  "orchid",
+  "teal",
+  "golden",
+  "olive",
+  "violet",
+  "charcoal",
+  "magenta",
+  "gold",
+  "cyan",
+];
+
+export const incomeCategories = [
+  { type: "Business", amount: 0, color: incomeColors[0] },
+  { type: "Dividend income", amount: 0, color: incomeColors[1] },
+  { type: "Interest", amount: 0, color: incomeColors[2] },
+  { type: "Social Media", amount: 0, color: incomeColors[3] },
+  { type: "Investments", amount: 0, color: incomeColors[4] },
+  { type: "Extra income", amount: 0, color: incomeColors[5] },
+  { type: "Deposits", amount: 0, color: incomeColors[6] },
+  { type: "Lottery", amount: 0, color: incomeColors[7] },
+  { type: "Gifts", amount: 0, color: incomeColors[8] },
+  { type: "Salary", amount: 0, color: incomeColors[9] },
+  { type: "Savings", amount: 0, color: incomeColors[10] },
+  { type: "Rental income", amount: 0, color: incomeColors[11] },
+];
+
+export const expenseCategories = [
+  { type: "Bills", amount: 0, color: expenseColors[0] },
+  { type: "Bank Charges", amount: 0, color: expenseColors[1] },
+  { type: "Water", amount: 0, color: expenseColors[2] },
+  { type: "Labour", amount: 0, color: expenseColors[3] },
+  { type: "Lighting", amount: 0, color: expenseColors[4] },
+  { type: "Insurance", amount: 0, color: expenseColors[5] },
+  { type: "Marketing", amount: 0, color: expenseColors[6] },
+  { type: "Advertising", amount: 0, color: expenseColors[7] },
+  { type: "Childcare", amount: 0, color: expenseColors[8] },
+  { type: "Health Insurance", amount: 0, color: expenseColors[9] },
+  { type: "Loans", amount: 0, color: expenseColors[10] },
+  { type: "Transportation", amount: 0, color: expenseColors[11] },
+  { type: "Clothes", amount: 0, color: expenseColors[12] },
+  { type: "Travel", amount: 0, color: expenseColors[13] },
+  { type: "Food", amount: 0, color: expenseColors[14] },
+  { type: "Shopping", amount: 0, color: expenseColors[15] },
+  { type: "Rent", amount: 0, color: expenseColors[16] },
+  { type: "Entertainment", amount: 0, color: expenseColors[17] },
+  { type: "Phone", amount: 0, color: expenseColors[18] },
+  { type: "Pets", amount: 0, color: expenseColors[19] },
+  { type: "Other", amount: 0, color: expenseColors[20] },
+];
+
+export const resetCategories = () => {
+  incomeCategories.forEach((c) => (c.amount = 0));
+  expenseCategories.forEach((c) => (c.amount = 0));
+};
