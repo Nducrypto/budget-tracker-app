@@ -52,7 +52,9 @@ const Form = ({ currentId, setCurrentId }) => {
 
   //=== UPDATING
   const clickEdit = useSelector((state) =>
-    currentId ? state.transactions.find((t) => t._id === currentId) : null
+    currentId
+      ? state.transactions.transactions.find((t) => t._id === currentId)
+      : null
   );
 
   useEffect(() => {

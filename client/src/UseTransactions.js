@@ -12,11 +12,15 @@ const UseTransactions = (title) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const creator = user?.result._id || user?.result.googleId;
 
-  const transactions = useSelector((state) =>
-    state.transactions.filter((p) => p.creator === creator)
+  const { transactions, isLoading } = useSelector(
+    (state) => state.transactions
   );
 
-  const transactionsPerType = transactions.filter(
+  const ndu = transactions.filter((p) =>
+    creator ? p.creator === creator : null
+  );
+
+  const transactionsPerType = ndu.filter(
     (transaction) => transaction.type === title
   );
 

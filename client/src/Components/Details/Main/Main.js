@@ -20,13 +20,17 @@ const Main = ({ currentId, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const creator = user?.result._id || user?.result.googleId;
 
-  const transactions = useSelector((state) =>
-    state.transactions.filter((p) => p.creator === creator)
+  const { transactions, isLoading } = useSelector(
+    (state) => state.transactions
+  );
+
+  const ndu = transactions.filter((p) =>
+    creator ? p.creator === creator : null
   );
 
   const classes = useStyles();
 
-  const balance = transactions.reduce(
+  const balance = ndu.reduce(
     (accumulator, currentvalue) =>
       currentvalue.type === "Expense"
         ? accumulator - currentvalue.amount

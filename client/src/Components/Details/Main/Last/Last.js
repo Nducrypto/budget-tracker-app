@@ -12,6 +12,7 @@ import {
   Paper,
   Typography,
   Button,
+  CircularProgress,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import useStyles from "./laststyles";
@@ -21,7 +22,7 @@ import { deleteTransaction } from "../../../../Actions/Transactions";
 
 const Last = ({ setCurrentId }) => {
   // const transactions = useSelector((state) => state.transactions);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(true);
   const classes = useStyles();
 
   const dispatch = useDispatch();
@@ -30,8 +31,12 @@ const Last = ({ setCurrentId }) => {
 
   const creator = user?.result._id || user?.result.googleId;
 
-  const transactions = useSelector((state) =>
-    state.transactions.filter((p) => p.creator === creator)
+  const { transactions, isLoading } = useSelector(
+    (state) => state.transactions
+  );
+
+  const ndu = transactions.filter((p) =>
+    creator ? p.creator === creator : null
   );
 
   if (!user?.result) {
@@ -48,7 +53,11 @@ const Last = ({ setCurrentId }) => {
     );
   }
 
-  return (
+  if (!ndu?.length && !isLoading) return "No Transactions";
+
+  return isLoading ? (
+    <CircularProgress />
+  ) : (
     <List
       dense={false}
       className={classes.list}
@@ -56,7 +65,7 @@ const Last = ({ setCurrentId }) => {
         marginTop: { xs: "0.6rem", md: "-6.2rem" },
       }}
     >
-      {transactions.map((transaction) => (
+      {ndu?.map((transaction) => (
         <Slide
           direction="down"
           in
@@ -108,6 +117,7 @@ const Last = ({ setCurrentId }) => {
       ))}
     </List>
   );
+  // );
 };
 
 export default Last;
