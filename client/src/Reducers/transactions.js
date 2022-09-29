@@ -1,4 +1,7 @@
-export default (state = { isLoading: true, transactions: [] }, action) => {
+export default (
+  state = { isLoading: true, transactions: [], transaction: {} },
+  action
+) => {
   switch (action.type) {
     case "START_LOADING":
       return { ...state, isLoading: true };
@@ -7,6 +10,9 @@ export default (state = { isLoading: true, transactions: [] }, action) => {
 
     case "FETCH":
       return { ...state, transactions: action.payload };
+
+    case "FETCH_ONE":
+      return { ...state, transaction: action.payload };
 
     case "CREATE":
       return {

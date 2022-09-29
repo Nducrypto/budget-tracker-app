@@ -39,7 +39,6 @@ const Form = ({ currentId, setCurrentId }) => {
   const [error, setError] = useState(false);
 
   const { segment } = useSpeechContext();
-  const classes = useStyles();
 
   const [open, setOpen] = useState(false);
 

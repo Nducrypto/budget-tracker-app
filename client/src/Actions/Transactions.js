@@ -13,6 +13,18 @@ export const getTransactions = () => async (dispatch) => {
     console.log(error);
   }
 };
+export const getTransaction = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: "START_LOADING" });
+
+    const { data } = await api.fetchTransaction(id);
+
+    dispatch({ type: "FETCH_ONE", payload: data });
+    dispatch({ type: "END_LOADING" });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const createTransaction = (transaction) => async (dispatch) => {
   try {

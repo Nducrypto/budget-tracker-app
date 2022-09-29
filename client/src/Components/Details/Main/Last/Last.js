@@ -11,21 +11,20 @@ import {
   Tooltip,
   Paper,
   Typography,
-  Button,
   CircularProgress,
 } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useStyles from "./laststyles";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { deleteTransaction } from "../../../../Actions/Transactions";
+import { useHistory } from "react-router-dom";
 
 const Last = ({ setCurrentId }) => {
-  // const transactions = useSelector((state) => state.transactions);
-  const [search, setSearch] = useState(true);
   const classes = useStyles();
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -74,22 +73,24 @@ const Last = ({ setCurrentId }) => {
           key={transaction._id}
         >
           <ListItem>
-            <ListItemAvatar>
-              <Avatar
-                sx={{
-                  backgroundColor:
-                    transaction.type === "Income" ? "blue" : "red",
-                }}
-              >
-                <MoneyOff />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary={transaction.category}
-              secondary={`$${transaction.amount} - ${moment(
-                transaction.date
-              ).format("dddd, MMMM Do YYYY")}`}
-            />
+            <div onClick={() => history.push(`/page/${transaction._id}`)}>
+              <ListItemAvatar>
+                <Avatar
+                  sx={{
+                    backgroundColor:
+                      transaction.type === "Income" ? "blue" : "red",
+                  }}
+                >
+                  <MoneyOff />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary={transaction.category}
+                secondary={`$${transaction.amount} - ${moment(
+                  transaction.date
+                ).format("dddd, MMMM Do YYYY")}`}
+              />
+            </div>
             <ListItemSecondaryAction>
               <Tooltip title="Delete">
                 <IconButton

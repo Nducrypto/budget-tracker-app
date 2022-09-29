@@ -15,14 +15,10 @@ import { useSelector } from "react-redux";
 import Auth from "../../Auth/Auth";
 
 const Main = ({ currentId, setCurrentId }) => {
-  // const transactions = useSelector((state) => state.transactions);
-
   const user = JSON.parse(localStorage.getItem("profile"));
   const creator = user?.result._id || user?.result.googleId;
 
-  const { transactions, isLoading } = useSelector(
-    (state) => state.transactions
-  );
+  const { transactions } = useSelector((state) => state.transactions);
 
   const ndu = transactions.filter((p) =>
     creator ? p.creator === creator : null

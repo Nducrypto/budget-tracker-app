@@ -1,7 +1,6 @@
 import { Snackbar, Alert } from "@mui/material";
 import React from "react";
 import useStyles from "./snackbarstyles";
-// import { useStyles } from "./SnackbarStyles";
 
 const CustomizedSnackbar = ({ open, setOpen }) => {
   const classes = useStyles();

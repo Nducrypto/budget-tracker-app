@@ -14,6 +14,17 @@ export const getTransactions = async (req, res) => {
     console.log(error);
   }
 };
+export const getTransaction = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const transaction = await BudgetTracker.findById(id);
+
+    res.status(200).json(transaction);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+    console.log(error);
+  }
+};
 
 export const createTransaction = async (req, res) => {
   const transaction = req.body;

@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://ndu-budget.herokuapp.com/api" });
-// const API = axios.create({ baseURL: "http://localhost:5000/api" });
+// const API = axios.create({ baseURL: "https://ndu-budget.herokuapp.com/api" });
+const API = axios.create({ baseURL: "http://localhost:5000/api" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -14,6 +14,8 @@ API.interceptors.request.use((req) => {
 });
 
 export const fetchTransactions = () => API.get("/page");
+
+export const fetchTransaction = (id) => API.get(`/page/${id}`);
 
 export const createTransaction = (newTransaction) =>
   API.post("/page", newTransaction);

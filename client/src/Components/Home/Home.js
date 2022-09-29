@@ -1,28 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   PushToTalkButton,
   PushToTalkButtonContainer,
 } from "@speechly/react-ui";
 import { useDispatch } from "react-redux";
-import { getTransactions } from "../../Actions/Transactions";
 import Main from "../Details/Main/Main";
 import Details from "../Details/Details";
 import Last from "../Details/Main/Last/Last";
 import useStyles from "./homestyles";
-import { CircularProgress, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
 
 const Home = () => {
   const [currentId, setCurrentId] = useState(0);
 
   const dispatch = useDispatch();
-  const classes = useStyles(); //got dis from makeStyles
+  const classes = useStyles();
   //   const theme = createTheme();
   const user = JSON.parse(localStorage.getItem("profile"));
-
-  useEffect(() => {
-    dispatch(getTransactions());
-  }, [dispatch]);
 
   return (
     <div>
