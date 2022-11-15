@@ -63,8 +63,7 @@ const SignUp = () => {
   useEffect(() => {
     function start() {
       gapi.client.init({
-        clientId:
-          "742692929164-mecpkmkmeuhi35um9kija3ouaofsknhd.apps.googleusercontent.com",
+        clientId: process.env.REACT_APP_GOOGLE_LOGIN,
         scope: "email",
       });
     }
@@ -174,7 +173,7 @@ const SignUp = () => {
 
           {/* GOOGLElOGIN, sign it with google  */}
           <GoogleLogin
-            clientId="742692929164-mecpkmkmeuhi35um9kija3ouaofsknhd.apps.googleusercontent.com"
+            clientId={process.env.REACT_APP_GOOGLE_LOGIN}
             render={(renderProps) => (
               <Button
                 className={classes.googleButton}

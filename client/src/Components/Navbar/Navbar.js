@@ -12,14 +12,12 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 import { LOGOUT } from "../../Types/ActionTypes";
-import useStyles from "./navstyles";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
 const Navbar = () => {
-  const classes = useStyles();
   const query = useQuery();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
